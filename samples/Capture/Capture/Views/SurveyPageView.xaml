@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 xmlns:views="clr-namespace:GlowingBrain.DataCapture.Views;assembly=GlowingBrain.DataCapture"
+			 x:Class="Capture.Views.SurveyPageView">
+	<ContentPage.Content>
+		<StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<StackLayout VerticalOptions="Start">
+				<Label Text="{Binding Progress}" />
+			</StackLayout>
+			<views:SurveyPageItemsView VerticalOptions="FillAndExpand" BindingContext="{Binding CurrentPage}" Items="{Binding Children}">
+			</views:SurveyPageItemsView>
+			<StackLayout VerticalOptions="End" Orientation="Horizontal" Padding="2" Spacing="2" BindingContext="{Binding CurrentPage}">
+				<Button Text="Back" Command="{Binding NavigateBack}" HorizontalOptions="FillAndExpand" />
+				<Button Text="Next" Command="{Binding SubmitPage}" HorizontalOptions="FillAndExpand" />
+			</StackLayout>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

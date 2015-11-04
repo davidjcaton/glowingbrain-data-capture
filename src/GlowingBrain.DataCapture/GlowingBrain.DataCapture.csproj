@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{08D15156-54BF-43B0-8495-E9C2D2C1F6EE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>GlowingBrain.DataCapture</RootNamespace>
+    <AssemblyName>GlowingBrain.DataCapture</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Units\Unit.cs" />
+    <Compile Include="Units\UnitConversion.cs" />
+    <Compile Include="Units\Quantity.cs" />
+    <Compile Include="PropertyChangedBase.cs" />
+    <Compile Include="ValueUnit.cs" />
+    <Compile Include="EventArgs.cs" />
+    <Compile Include="Infrastructure\EnumerableExtensions.cs" />
+    <Compile Include="OptionValue.cs" />
+    <Compile Include="SurveyExecutionContext.cs" />
+    <Compile Include="SurveyPageAppearance.cs" />
+    <Compile Include="Views\EmptyClass.cs" />
+    <Compile Include="ViewModels\BooleanQuestion.cs" />
+    <Compile Include="ViewModels\CheckboxBooleanQuestion.cs" />
+    <Compile Include="ViewModels\ContainerSurveyItem.cs" />
+    <Compile Include="ViewModels\DateQuestion.cs" />
+    <Compile Include="ViewModels\FreeTextQuestion.cs" />
+    <Compile Include="ViewModels\InlineGroupQuestion.cs" />
+    <Compile Include="ViewModels\NumericEntryQuantityQuestion.cs" />
+    <Compile Include="ViewModels\OptionQuestion.cs" />
+    <Compile Include="ViewModels\PickerOptionQuestion.cs" />
+    <Compile Include="ViewModels\QuantityQuestion.cs" />
+    <Compile Include="ViewModels\Question.cs" />
+    <Compile Include="ViewModels\QuestionCollectionExtensions.cs" />
+    <Compile Include="ViewModels\QuestionUnitPreferences.cs" />
+    <Compile Include="ViewModels\QuestionUnits.cs" />
+    <Compile Include="ViewModels\RadioOptionQuestion.cs" />
+    <Compile Include="ViewModels\SliderQuantityQuestion.cs" />
+    <Compile Include="ViewModels\SubpageGroupQuestion.cs" />
+    <Compile Include="ViewModels\SurveyItem.cs" />
+    <Compile Include="ViewModels\SurveyItemCollection.cs" />
+    <Compile Include="Views\BusyIndicator.cs" />
+    <Compile Include="Views\ExtendedDatePicker.cs" />
+    <Compile Include="Views\ExtendedPicker.cs" />
+    <Compile Include="Views\ICanBeSelected.cs" />
+    <Compile Include="Views\Option.cs" />
+    <Compile Include="Views\OptionValuePicker.cs" />
+    <Compile Include="Views\PagePanel.cs" />
+    <Compile Include="Views\PlaceholderView.cs" />
+    <Compile Include="Views\RadioGroup.cs" />
+    <Compile Include="Views\SimpleListView.cs" />
+    <Compile Include="Views\StandardViews.cs" />
+    <Compile Include="Views\StateContent.cs" />
+    <Compile Include="Views\StatefulContentView.cs" />
+    <Compile Include="Views\ToggleOption.cs" />
+    <Compile Include="Views\Questions\CheckboxBooleanQuestionInputView.cs" />
+    <Compile Include="Views\Questions\FreeTextQuestionInputView.cs" />
+    <Compile Include="Views\Questions\InlineGroupQuestionInputView.cs" />
+    <Compile Include="Views\Questions\NumericEntryQuantityQuestionInputView.cs" />
+    <Compile Include="Views\Questions\PickerOptionQuestionInputView.cs" />
+    <Compile Include="Views\Questions\RadioGroupOptionQuestionInputView.cs" />
+    <Compile Include="Views\Questions\QuantityQuestionInputView.cs" />
+    <Compile Include="Views\Questions\SliderQuantityQuestionInputView.cs" />
+    <Compile Include="Views\Questions\DateQuestionInputView.cs" />
+    <Compile Include="Views\Questions\QuestionFooterView.cs" />
+    <Compile Include="Views\Questions\QuestionHeaderView.cs" />
+    <Compile Include="Views\Questions\QuestionInputView.cs" />
+    <Compile Include="Views\Questions\SubpageGroupQuestionInputView.cs" />
+    <Compile Include="Views\QuestionViews.cs" />
+    <Compile Include="Views\Pages\StandardSurveySubpage.cs" />
+    <Compile Include="Views\SurveyPageItemsView.cs" />
+    <Compile Include="ViewModels\SurveyPage.cs" />
+    <Compile Include="ViewModels\Survey.cs" />
+    <Compile Include="DelegateCommand.cs" />
+    <Compile Include="Views\Pages\StandardSurveyPageBase.cs" />
+    <Compile Include="Views\Pages\StandardSurveyPage.cs" />
+    <Compile Include="Views\GBEntry.cs" />
+    <Compile Include="Views\GBPicker.cs" />
+    <Compile Include="Views\GBDatePicker.cs" />
+    <Compile Include="IResult.cs" />
+    <Compile Include="ViewModels\ISurvey.cs" />
+    <Compile Include="ViewModels\ISurveyPage.cs" />
+    <Compile Include="ViewModels\Results.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Import Project="..\..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <ItemGroup>
+    <Folder Include="Views\" />
+    <Folder Include="Units\" />
+    <Folder Include="Infrastructure\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\Questions\" />
+    <Folder Include="Views\Pages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Xamarin.Forms.Core">
+      <HintPath>..\..\packages\Xamarin.Forms.1.5.1.6471\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml">
+      <HintPath>..\..\packages\Xamarin.Forms.1.5.1.6471\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform">
+      <HintPath>..\..\packages\Xamarin.Forms.1.5.1.6471\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
