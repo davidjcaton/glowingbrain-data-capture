@@ -27,29 +27,39 @@ namespace GlowingBrain.DataCapture.Views
 
 		public static PageForContainerQuestionDelegate PageForContainerQuestion { get; set; }
 
-		public static View DefaultViewForQuestion (SurveyItem question, SurveyPageAppearance appearance)
+		public static View DefaultViewForQuestion (SurveyItem item, SurveyPageAppearance appearance)
 		{
-			if (question is DateQuestion) {
-				return new DateQuestionInputView ((DateQuestion)question, appearance);
-			} else if (question is PickerOptionQuestion) {
-				return new PickerOptionQuestionInputView ((OptionQuestion)question, appearance);
-			} else if (question is RadioOptionQuestion) {
-				return new RadioGroupOptionQuestionInputView ((OptionQuestion)question, appearance);
-			} else if (question is NumericEntryQuantityQuestion) {
-				return new NumericEntryQuantityQuestionInputView ((QuantityQuestion)question, appearance);
-			} else if (question is CheckboxBooleanQuestion) {
-				return new CheckboxBooleanQuestionInputView ((BooleanQuestion)question, appearance);
-			} else if (question is InlineGroupQuestion) {
-				return new InlineGroupQuestionInputView ((InlineGroupQuestion)question, appearance);
-			} else if (question is SubpageGroupQuestion) {
-				return new SubpageGroupQuestionInputView ((SubpageGroupQuestion)question, appearance);
-			} else if (question is FreeTextQuestion) {
-				return new FreeTextQuestionInputView ((FreeTextQuestion)question, appearance);
-			} else if (question is SliderQuantityQuestion) {
-				return new SliderQuantityQuestionInputView ((SliderQuantityQuestion)question, appearance);
+			View view = null;
+
+			if (item is DateQuestion) {
+				view = new DateQuestionInputView ((DateQuestion)item, appearance);
+			} else if (item is PickerOptionQuestion) {
+				view = new PickerOptionQuestionInputView ((OptionQuestion)item, appearance);
+			} else if (item is RadioOptionQuestion) {
+				view = new RadioGroupOptionQuestionInputView ((OptionQuestion)item, appearance);
+			} else if (item is NumericEntryQuantityQuestion) {
+				view = new NumericEntryQuantityQuestionInputView ((QuantityQuestion)item, appearance);
+			} else if (item is CheckboxBooleanQuestion) {
+				view = new CheckboxBooleanQuestionInputView ((BooleanQuestion)item, appearance);
+			} else if (item is InlineGroupQuestion) {
+				view = new InlineGroupQuestionInputView ((InlineGroupQuestion)item, appearance);
+			} else if (item is SubpageGroupQuestion) {
+				view = new SubpageGroupQuestionInputView ((SubpageGroupQuestion)item, appearance);
+			} else if (item is FreeTextQuestion) {
+				view = new FreeTextQuestionInputView ((FreeTextQuestion)item, appearance);
+			} else if (item is SliderQuantityQuestion) {
+				view = new SliderQuantityQuestionInputView ((SliderQuantityQuestion)item, appearance);
 			}
 
-			return null;
+			if (view != null) {
+				// place questions in container
+				var question = item as IQuestion;
+				if (question != null) {
+					view = new QuestionInputViewContainer (question, view, appearance);
+				}
+			}
+
+			return view;
 		}
 
 		public static Page DefaultPageForContainerQuestion (ContainerSurveyItem container, SurveyPageAppearance appearance)

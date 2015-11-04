@@ -42,13 +42,20 @@ namespace GlowingBrain.DataCapture.ViewModels
 			set { Set (ref _pages, value); }
 		}
 
-		public ISubmitPageResult SubmitPage (ISurveyPage page)
+		public ISubmitPageResult SubmitPage (IEnumerable<IQuestion> questions)
 		{
+			foreach (var question in questions) {
+				question.Validate ();
+				if (question.HasError) {
+					return new ValidationFailureSubmitPageResult ();
+				}
+			}
+
 			OnAdvancePage ();
 			return new SuccessSubmitPageResult ();
 		}
 
-		public INavigateBackResult NavigateBack (ISurveyPage page)
+		public INavigateBackResult NavigateBack ()
 		{
 			if (CurrentPageIndex == 0) {
 				return new FailureNavigateBackResult ();

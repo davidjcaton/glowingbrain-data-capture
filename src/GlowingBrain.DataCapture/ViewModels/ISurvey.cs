@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace GlowingBrain.DataCapture.ViewModels
 {
@@ -7,7 +8,7 @@ namespace GlowingBrain.DataCapture.ViewModels
 		string Title { get; }
 		double Progress { get; }
 		ISurveyPage CurrentPage { get; }
-		ISubmitPageResult SubmitPage (ISurveyPage page);
-		INavigateBackResult NavigateBack (ISurveyPage page);
+		ISubmitPageResult SubmitPage (IEnumerable<IQuestion> questions);
+		INavigateBackResult NavigateBack ();
 	}	
 }

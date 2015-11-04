@@ -22,25 +22,25 @@ namespace GlowingBrain.DataCapture.Views.Questions
 
 		class CustomRadioGroup : RadioGroup
 		{
-			readonly SurveyPageAppearance _settings;
+			readonly SurveyPageAppearance _appearance;
 
-			public CustomRadioGroup (SurveyPageAppearance settings)
+			public CustomRadioGroup (SurveyPageAppearance appearance)
 			{
-				_settings = settings;
+				_appearance = appearance;
 
-				UnselectedSource = _settings.UnselectedOptionImageSource;
-				SelectedSource = _settings.SelectedOptionImageSource;
+				UnselectedSource = _appearance.UnselectedOptionImageSource;
+				SelectedSource = _appearance.SelectedOptionImageSource;
 			}
 
 			protected override View CreateSeperatorView ()
 			{
-				return StandardViews.CreateSeparator (_settings.SeparatorColor);
+				return StandardViews.CreateSeparator (_appearance.SeparatorColor);
 			}
 
 			protected override Option CreateOptionForItem (object item)
 			{
 				var option = base.CreateOptionForItem (item);
-				option.HeightRequest = _settings.ItemHeight;
+				option.Style = _appearance.QuestionOptionStyle;
 				return option;
 			}
 		}

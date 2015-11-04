@@ -40,7 +40,18 @@ namespace Capture
 					},
 					Minimum = new ValueUnit { Value = 1.0, Unit = "m" },
 					Maximum = new ValueUnit { Value = 2.5, Unit = "m" },
-					Response = new ValueUnit { Value = 1.75, Unit = "m" }
+					Response = new ValueUnit { Value = 1.75, Unit = "m" },
+					Validator = question => {
+						double heightInMeters;
+						if (!question.Response.TryGetValue ("m", out heightInMeters)) {
+							question.ErrorMessage = "Enter a valid height";
+							return;
+						}
+
+						if (heightInMeters > 2.2) {
+							question.ErrorMessage = "So tall";
+						}
+					}
 				});
 				survey.Pages.Add (page1);
 
@@ -60,6 +71,20 @@ namespace Capture
 					Response = new ValueUnit { Value = 70, Unit = "kg" }
 				});
 				survey.Pages.Add (page2);
+
+				var page3 = new SurveyPage (survey);
+				page3.Caption = "Marital Status";
+
+				var maritalStatusQuestion = new RadioOptionQuestion ();
+				maritalStatusQuestion.Caption = "Marital Status";
+				maritalStatusQuestion.OptionValues = new List<OptionValue> {
+					new OptionValue { Value = "single", Text = "Single" },
+					new OptionValue { Value = "married", Text = "Married or co-habiting" },
+					new OptionValue { Value = "divorced", Text = "Divorced" },
+				};
+					
+				page3.Children.Add (maritalStatusQuestion);
+				survey.Pages.Add (page3);
 
 				return survey;
 			}

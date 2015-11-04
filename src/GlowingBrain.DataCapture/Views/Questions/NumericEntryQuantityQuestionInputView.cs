@@ -1,7 +1,7 @@
 using System;
+using System.Linq;
 using GlowingBrain.DataCapture.ViewModels;
 using Xamarin.Forms;
-using System.Linq;
 
 namespace GlowingBrain.DataCapture.Views.Questions
 {

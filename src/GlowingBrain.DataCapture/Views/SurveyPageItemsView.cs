@@ -11,20 +11,21 @@ namespace GlowingBrain.DataCapture.Views
 		readonly StackLayout _stackLayout;
 		readonly SurveyPageAppearance _appearance;
 
-		public SurveyPageItemsView () : this (null)
+		public SurveyPageItemsView () : this (SurveyPageAppearance.Default)
 		{
 		}
 
 		public SurveyPageItemsView (SurveyPageAppearance appearance)
 		{
-			_appearance = appearance ?? SurveyPageAppearance.Default;
+			_appearance = appearance;
 
 			BackgroundColor = _appearance.BackgroundColor;
 			VerticalOptions = LayoutOptions.FillAndExpand;
 
-			_stackLayout = new StackLayout ();
-			_stackLayout.Spacing = _appearance.QuestionSpacing;
-
+			_stackLayout = new StackLayout {
+				Style = appearance.PageItemsViewStyle
+			};
+				
 			var scrollView = new ScrollView ();
 			scrollView.Content = _stackLayout;
 

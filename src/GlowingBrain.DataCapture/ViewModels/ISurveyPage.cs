@@ -9,6 +9,5 @@ namespace GlowingBrain.DataCapture.ViewModels
 		ICommand SubmitPage { get; }
 		bool IsFirstPage { get; }
 		bool IsLastPage { get; }
-	}
-	
+	}	
 }

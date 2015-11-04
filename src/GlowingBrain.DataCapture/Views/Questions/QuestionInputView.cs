@@ -1,5 +1,6 @@
 using System;
 using Xamarin.Forms;
+using GlowingBrain.DataCapture.ViewModels;
 
 namespace GlowingBrain.DataCapture.Views.Questions
 {
@@ -8,7 +9,7 @@ namespace GlowingBrain.DataCapture.Views.Questions
 		public QuestionInputView (SurveyPageAppearance appearance)
 		{
 			this.Appearance = appearance;
-			HeightRequest = appearance.ItemHeight;
+			this.Style = appearance.QuestionInputViewStyle;
 		}
 
 		protected SurveyPageAppearance Appearance { get; private set; }

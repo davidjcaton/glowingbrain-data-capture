@@ -1,13 +1,16 @@
 using System;
+using System.ComponentModel;
 
 namespace GlowingBrain.DataCapture.ViewModels
 {
-	public interface IQuestion
+	public interface IQuestion : INotifyPropertyChanged
 	{
 		bool IsMandatory { get; }
 		string ErrorMessage { get; }
 		bool HasError { get; }
 		bool HasResponse { get; }
+		void ClearError ();
+		void Validate ();
 	}
 
 	public abstract class Question<TResponse> : SurveyItem, IQuestion
@@ -15,6 +18,11 @@ namespace GlowingBrain.DataCapture.ViewModels
 		bool _isMandatory;
 		TResponse _response;
 		string _errorMessage;
+
+		public Question ()
+		{
+			Validator = _ => {};	
+		}
 
 		public TResponse Response {
 			get { return _response; }
@@ -26,6 +34,8 @@ namespace GlowingBrain.DataCapture.ViewModels
 			}
 		}
 
+		public Action<Question<TResponse>> Validator { get; set; }
+				
 		public abstract bool HasResponse { get; }
 
 		public bool IsMandatory {
@@ -49,6 +59,12 @@ namespace GlowingBrain.DataCapture.ViewModels
 		public void ClearError ()
 		{
 			ErrorMessage = null;
+		}
+
+		public void Validate ()
+		{
+			ClearError ();
+			Validator (this);
 		}
 
 		protected virtual void OnResponseChanged (TResponse oldValue, TResponse newValue)

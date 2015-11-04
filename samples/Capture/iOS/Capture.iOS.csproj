@@ -92,6 +92,13 @@
     <BundleResource Include="Resources\Icon-Small-40.png" />
     <BundleResource Include="Resources\Icon-Small-40%402x.png" />
     <BundleResource Include="Resources\Icon-Small-40%403x.png" />
+    <BundleResource Include="Resources\disclosure.png" />
+    <BundleResource Include="Resources\empty.png" />
+    <BundleResource Include="Resources\empty%402x.png" />
+    <BundleResource Include="Resources\empty%403x.png" />
+    <BundleResource Include="Resources\tick.png" />
+    <BundleResource Include="Resources\tick%402x.png" />
+    <BundleResource Include="Resources\tick%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

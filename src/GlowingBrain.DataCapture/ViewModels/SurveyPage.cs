@@ -44,7 +44,7 @@ namespace GlowingBrain.DataCapture.ViewModels
 
 		protected virtual void OnSubmitPage ()
 		{
-			_survey.SubmitPage (this);
+			_survey.SubmitPage (Questions);
 		}
 
 		protected virtual bool OnCanExecuteSubmitPage ()
@@ -60,7 +60,7 @@ namespace GlowingBrain.DataCapture.ViewModels
 
 		protected virtual void OnNavigateBack ()
 		{
-			_survey.NavigateBack (this);
+			_survey.NavigateBack ();
 		}
 
 		protected virtual bool OnCanExecuteNavigateBack ()
