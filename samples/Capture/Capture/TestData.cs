@@ -29,7 +29,7 @@ namespace Capture
 
 				var page1 = new SurveyPage (survey);
 				page1.Caption = "About you";
-				page1.Children.Add (new NumericEntryQuantityQuestion {
+				page1.Children.Add (new NumericEntryQuantityQuestion (page1) {
 					Id = "height",
 					IsMandatory = true,
 					Caption = "Height",
@@ -57,7 +57,7 @@ namespace Capture
 
 				var page2 = new SurveyPage (survey);
 				page2.Caption = "About you";
-				page2.Children.Add (new SliderQuantityQuestion {
+				page2.Children.Add (new SliderQuantityQuestion (page2) {
 					Id = "weight",
 					IsMandatory = true,
 					Caption = "Weight",
@@ -75,7 +75,7 @@ namespace Capture
 				var page3 = new SurveyPage (survey);
 				page3.Caption = "Marital Status";
 
-				var maritalStatusQuestion = new RadioOptionQuestion ();
+				var maritalStatusQuestion = new RadioOptionQuestion (page3);
 				maritalStatusQuestion.Caption = "Marital Status";
 				maritalStatusQuestion.OptionValues = new List<OptionValue> {
 					new OptionValue { Value = "single", Text = "Single" },

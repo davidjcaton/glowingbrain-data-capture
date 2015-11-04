@@ -9,6 +9,10 @@ namespace GlowingBrain.DataCapture.ViewModels
 		OptionValue _selectedOption;
 		List<OptionValue> _optionValues = new List<OptionValue> ();
 
+		protected OptionQuestion (ISurveyPage page) : base (page)
+		{
+		}
+
 		public override bool HasResponse {
 			get { return !String.IsNullOrEmpty (Response); }
 		}
@@ -31,9 +35,9 @@ namespace GlowingBrain.DataCapture.ViewModels
 			}
 		}
 
-		protected override void OnResponseChanged (string oldValue, string newValue)
+		protected override void OnResponseChanged ()
 		{
-			base.OnResponseChanged (oldValue, newValue);
+			base.OnResponseChanged ();
 			SetSelectedOption ();
 		}
 

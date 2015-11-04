@@ -13,6 +13,10 @@ namespace GlowingBrain.DataCapture.ViewModels
 		List<OptionValue> _unitOptions;
 		string _defaultUnit;
 
+		protected QuantityQuestion (ISurveyPage page) : base (page)
+		{
+		}
+
 		public override bool HasResponse {
 			get { return Response != null; }
 		}

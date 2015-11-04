@@ -14,7 +14,7 @@ namespace GlowingBrain.DataCapture.Views.Questions
 			radioGroup.VerticalOptions = LayoutOptions.Fill;
 			radioGroup.BindingContext = question;
 			radioGroup.ItemsSource = question.OptionValues;
-			radioGroup.SetBinding (OptionValuePicker.ValueProperty, new Binding ("SelectedOption", BindingMode.TwoWay));
+			radioGroup.SetBinding (RadioGroup.SelectedItemProperty, new Binding ("SelectedOption", BindingMode.TwoWay));
 
 			HeightRequest = -1;
 			Content = radioGroup;

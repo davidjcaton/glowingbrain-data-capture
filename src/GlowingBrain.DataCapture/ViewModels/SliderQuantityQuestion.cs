@@ -7,7 +7,7 @@ namespace GlowingBrain.DataCapture.ViewModels
 		public ValueUnit Step { get; set; }
 		public bool IsValueVisible { get; set; }
 
-		public SliderQuantityQuestion ()
+		public SliderQuantityQuestion (ISurveyPage page) : base (page)
 		{
 			IsValueVisible = true;
 		}

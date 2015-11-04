@@ -4,6 +4,8 @@ namespace GlowingBrain.DataCapture.ViewModels
 {
 	public class Survey : PropertyChangedBase, ISurvey
 	{
+		readonly ISurveyResponseStore _surveyResponseStore;
+
 		string _title;
 		double _progress;
 		List<SurveyPage> _pages;
@@ -11,9 +13,15 @@ namespace GlowingBrain.DataCapture.ViewModels
 
 		public Survey ()
 		{
+			_surveyResponseStore = new SurveyResponseStore ();
+
 			_pages = new List<SurveyPage> ();
 			_progress = 0.0;
 			CurrentPageIndex = 0;
+		}
+
+		public ISurveyResponseStore ResponseStore {
+			get { return _surveyResponseStore; }
 		}
 
 		public string Title {

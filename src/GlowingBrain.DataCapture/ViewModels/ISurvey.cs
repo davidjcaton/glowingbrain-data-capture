@@ -10,5 +10,6 @@ namespace GlowingBrain.DataCapture.ViewModels
 		ISurveyPage CurrentPage { get; }
 		ISubmitPageResult SubmitPage (IEnumerable<IQuestion> questions);
 		INavigateBackResult NavigateBack ();
+		ISurveyResponseStore ResponseStore { get; }
 	}	
 }

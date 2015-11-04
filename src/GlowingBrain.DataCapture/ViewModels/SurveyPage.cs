@@ -24,6 +24,10 @@ namespace GlowingBrain.DataCapture.ViewModels
 				_ => OnCanExecuteSubmitPage ());
 		}
 
+		public ISurvey Survey {
+			get { return _survey; }
+		}
+
 		public bool IsFirstPage {
 			get;
 			set;
