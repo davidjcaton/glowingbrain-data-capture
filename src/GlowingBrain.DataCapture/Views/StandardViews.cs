@@ -5,13 +5,11 @@ namespace GlowingBrain.DataCapture.Views
 {
 	internal static class StandardViews
 	{
-		public static BoxView CreateSeparator (Color color)
+		public static BoxView CreateSeparator (Style style)
 		{
-			var separator = new BoxView {
-				HeightRequest = 1,
-				Color = color
+			return new BoxView {
+				Style = style
 			};
-			return separator;
 		}
 	}	
 }

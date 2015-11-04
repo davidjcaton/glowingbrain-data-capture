@@ -19,11 +19,12 @@ namespace GlowingBrain.DataCapture.Views
 		{
 			_appearance = appearance;
 
-			BackgroundColor = _appearance.BackgroundColor;
 			VerticalOptions = LayoutOptions.FillAndExpand;
 
+			Style = appearance.PageItemsViewStyle;
+
 			_stackLayout = new StackLayout {
-				Style = appearance.PageItemsViewStyle
+				Style = appearance.PageItemsLayoutStyle
 			};
 				
 			var scrollView = new ScrollView ();
@@ -79,10 +80,10 @@ namespace GlowingBrain.DataCapture.Views
 			stackLayout.Children.Add (inputStackLayout);
 
 			inputStackLayout.BackgroundColor = Color.White;
-			inputStackLayout.Children.Add (StandardViews.CreateSeparator (appearance.SeparatorColor));
+			inputStackLayout.Children.Add (StandardViews.CreateSeparator (appearance.SeperatorStyle));
 			var inputView = QuestionViews.ViewForQuestion (question, appearance);
 			inputStackLayout.Children.Add (inputView);
-			inputStackLayout.Children.Add (StandardViews.CreateSeparator (appearance.SeparatorColor));
+			inputStackLayout.Children.Add (StandardViews.CreateSeparator (appearance.SeperatorStyle));
 
 			if (!String.IsNullOrWhiteSpace (question.Footnote)) {
 				var footerView = new QuestionFooterView (question, appearance);

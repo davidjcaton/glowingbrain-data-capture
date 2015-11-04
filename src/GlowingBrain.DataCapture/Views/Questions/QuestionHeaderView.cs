@@ -6,21 +6,18 @@ namespace GlowingBrain.DataCapture.Views.Questions
 {
 	public class QuestionHeaderView : ContentView
 	{
-		public QuestionHeaderView (SurveyItem question, SurveyPageAppearance settings)
+		public QuestionHeaderView (SurveyItem question, SurveyPageAppearance appearance)
 		{
-			var stackLayout = new StackLayout ();
-
-			var captionLabel = new Label {
-				Text = question.Caption,
-				FontAttributes = FontAttributes.Bold,
-				VerticalOptions = LayoutOptions.FillAndExpand,
-				YAlign = TextAlignment.End
+			Content = new StackLayout {
+				Style = appearance.QuestionHeaderLayoutStyle,
+				Children = {
+					new Label {
+						Text = question.Caption,
+						VerticalOptions = LayoutOptions.FillAndExpand,
+						Style = appearance.QuestionHeaderLabelStyle
+					}
+				}
 			};
-
-			stackLayout.Children.Add (captionLabel);
-			stackLayout.HeightRequest = settings.HeaderHeight;
-
-			Content = stackLayout;
 		}
 	}		
 }

@@ -34,7 +34,7 @@ namespace GlowingBrain.DataCapture.Views.Questions
 
 			protected override View CreateSeperatorView ()
 			{
-				return StandardViews.CreateSeparator (_appearance.SeparatorColor);
+				return StandardViews.CreateSeparator (_appearance.SeperatorStyle);
 			}
 
 			protected override Option CreateOptionForItem (object item)

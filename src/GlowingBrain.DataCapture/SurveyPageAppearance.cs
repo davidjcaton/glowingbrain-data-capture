@@ -13,17 +13,36 @@ namespace GlowingBrain.DataCapture
 
 		public SurveyPageAppearance ()
 		{
-			BackgroundColor = Color.FromHex ("#EBEBF2");
-			SeparatorColor = Color.FromHex ("#b6b6b6");
-			HeaderHeight = 50;
+			SeperatorStyle = new Style (typeof(BoxView)) {
+				Setters = {
+					new Setter {
+						Property = BoxView.HeightRequestProperty,
+						Value = 1
+					},
+					new Setter {
+						Property = BoxView.ColorProperty,
+						Value = Color.FromHex ("#b6b6b6")
+					}
+				}
+			};
+				
 			SelectedOptionImageSource = ImageSource.FromFile ("tick.png");
 			UnselectedOptionImageSource = ImageSource.FromFile ("empty.png");
-			FooterFontSize = Device.GetNamedSize (NamedSize.Micro, typeof(Label));
+
 			SelectedCheckboxImageSource = ImageSource.FromFile ("tick.png");
 			UnselectedCheckboxImageSource = ImageSource.FromFile ("empty.png");
 			DisclosureImageSource = ImageSource.FromFile ("disclosure.png");
 
-			PageItemsViewStyle = new Style (typeof(StackLayout)) {
+			PageItemsViewStyle = new Style (typeof(ContentView)) {
+				Setters = {
+					new Setter {
+						Property = ContentView.BackgroundColorProperty,
+						Value = Color.FromHex ("#EBEBF2")
+					}
+				}
+			};
+
+			PageItemsLayoutStyle = new Style (typeof(StackLayout)) {
 				Setters = {
 					new Setter {
 						Property = StackLayout.SpacingProperty,
@@ -66,14 +85,61 @@ namespace GlowingBrain.DataCapture
 					}
 				}
 			};
+
+			QuestionHeaderLabelStyle = new Style (typeof(Label)) {
+				Setters = {
+					new Setter {
+						Property = Label.FontSizeProperty,
+						Value = Device.GetNamedSize (NamedSize.Medium, typeof (Label))
+					},
+					new Setter {
+						Property = Label.FontAttributesProperty,
+						Value = FontAttributes.Bold
+					},
+					new Setter {
+						Property = Label.YAlignProperty,
+						Value = TextAlignment.End
+					}
+				}
+			};
+
+			QuestionFooterLabelStyle = new Style (typeof(Label)) {
+				Setters = {
+					new Setter {
+						Property = Label.FontSizeProperty,
+						Value = Device.GetNamedSize (NamedSize.Micro, typeof (Label))
+					}
+				}
+			};
+
+			QuestionHeaderLayoutStyle = new Style (typeof(StackLayout)) {
+				Setters = {
+					new Setter {
+						Property = StackLayout.PaddingProperty,
+						Value = new Thickness (10, 0, 10, 0)
+					},
+					new Setter {
+						Property = StackLayout.HeightRequestProperty,
+						Value = 50
+					}
+				}
+			};
+
+			QuestionFooterLayoutStyle = new Style (typeof(StackLayout)) {
+				Setters = {
+					new Setter {
+						Property = StackLayout.PaddingProperty,
+						Value = new Thickness (10, 0, 10, 0)
+					}
+				}
+			};
 		}
 
 		public static SurveyPageAppearance Default { get; set; }
 
-		public Color BackgroundColor { get; set; }
-		public Color SeparatorColor { get; set; }
-		public double FooterFontSize { get; set; }
-		public double HeaderHeight { get; set; }
+		//public Color BackgroundColor { get; set; }
+
+		public Style SeperatorStyle { get; set; }
 
 		public ImageSource SelectedOptionImageSource { get; set; }
 
@@ -87,6 +153,8 @@ namespace GlowingBrain.DataCapture
 
 		public Style PageItemsViewStyle { get; set; }
 
+		public Style PageItemsLayoutStyle { get; set; }
+
 		public Style QuestionInputViewStyle { get; set; }
 
 		public Style QuestionOptionStyle { get; set; }
@@ -94,5 +162,13 @@ namespace GlowingBrain.DataCapture
 		public Style QuestionInputViewContainerLayoutStyle { get; set; }
 
 		public Style QuestionErrorLabelStyle { get; set; }
+
+		public Style QuestionFooterLabelStyle { get; set; }
+
+		public Style QuestionHeaderLabelStyle { get; set; }
+
+		public Style QuestionFooterLayoutStyle { get; set; }
+
+		public Style QuestionHeaderLayoutStyle { get; set; }
 	}		
 }

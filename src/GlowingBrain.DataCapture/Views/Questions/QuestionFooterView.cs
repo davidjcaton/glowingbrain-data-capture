@@ -8,17 +8,16 @@ namespace GlowingBrain.DataCapture.Views.Questions
 	{
 		public QuestionFooterView (SurveyItem question, SurveyPageAppearance appearance)
 		{
-			var stackLayout = new StackLayout ();
-
-			var footnoteLabel = new Label {
-				Text = question.Footnote,
-				FontSize = appearance.FooterFontSize
+			Content = new StackLayout {
+				Style = appearance.QuestionFooterLayoutStyle,
+				Children = {
+					new Label {
+						Text = question.Footnote,
+						VerticalOptions = LayoutOptions.Start,
+						Style = appearance.QuestionFooterLabelStyle
+					}
+				}
 			};
-
-			footnoteLabel.VerticalOptions = LayoutOptions.Start;
-			stackLayout.Children.Add (footnoteLabel);
-
-			Content = stackLayout;
 		}
 	}		
 }

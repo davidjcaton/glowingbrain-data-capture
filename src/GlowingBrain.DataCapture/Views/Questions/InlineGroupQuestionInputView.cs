@@ -38,7 +38,7 @@ namespace GlowingBrain.DataCapture.Views.Questions
 
 			protected override View OnCreateSeperatorView ()
 			{
-				return StandardViews.CreateSeparator (_appearance.SeparatorColor);
+				return StandardViews.CreateSeparator (_appearance.SeperatorStyle);
 			}
 		}
 	}
