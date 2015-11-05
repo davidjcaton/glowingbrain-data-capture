@@ -6,7 +6,7 @@ namespace GlowingBrain.DataCapture.Views.Questions
 {
 	public class QuestionHeaderView : ContentView
 	{
-		public QuestionHeaderView (SurveyItem question, SurveyPageAppearance appearance)
+		public QuestionHeaderView (ISurveyItem question, SurveyPageAppearance appearance)
 		{
 			Content = new StackLayout {
 				Style = appearance.QuestionHeaderLayoutStyle,

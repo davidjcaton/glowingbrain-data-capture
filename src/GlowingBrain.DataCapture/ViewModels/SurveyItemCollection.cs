@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace GlowingBrain.DataCapture.ViewModels
 {
-	public class SurveyItemCollection : List<SurveyItem>
+	public class SurveyItemCollection : List<ISurveyItem>
 	{
-		readonly ContainerSurveyItem _container;
+		readonly ISurveyItemContainer _container;
 
-		public SurveyItemCollection (ContainerSurveyItem container)
+		public SurveyItemCollection (ISurveyItemContainer container)
 		{			
 			_container = container;
 		}
 
-		public new void Add (SurveyItem item)
+		public new void Add (ISurveyItem item)
 		{
 			base.Add (item);
 
@@ -30,7 +30,7 @@ namespace GlowingBrain.DataCapture.ViewModels
 			}
 		}
 
-		public new void AddRange (IEnumerable<SurveyItem> items)
+		public new void AddRange (IEnumerable<ISurveyItem> items)
 		{
 			if (items != null) {
 				foreach (var item in items) {
@@ -39,7 +39,7 @@ namespace GlowingBrain.DataCapture.ViewModels
 			}
 		}
 
-		protected virtual void OnSurveyItemResponseChanged (SurveyItem item)
+		protected virtual void OnSurveyItemResponseChanged (ISurveyItem item)
 		{
 			_container.NotifyChildResponseChanged (item);
 		}

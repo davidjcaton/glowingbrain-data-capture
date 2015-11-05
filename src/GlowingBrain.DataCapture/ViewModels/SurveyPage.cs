@@ -11,7 +11,7 @@ namespace GlowingBrain.DataCapture.ViewModels
 		readonly DelegateCommand _navigateBackCommand;
 		readonly DelegateCommand _submitPageCommand;
 
-		public SurveyPage (ISurvey survey)
+		public SurveyPage (ISurvey survey) : base (null)
 		{
 			_survey = survey;
 
@@ -76,7 +76,7 @@ namespace GlowingBrain.DataCapture.ViewModels
 			get { return this.Descendants ().OfType<IQuestion> (); }
 		}
 
-		protected override void OnChildResponseChanged (SurveyItem item)
+		protected override void OnChildResponseChanged (ISurveyItem item)
 		{
 			base.OnChildResponseChanged (item);
 			_submitPageCommand.RaiseCanExecuteChanged ();

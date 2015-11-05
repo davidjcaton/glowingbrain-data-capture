@@ -37,18 +37,18 @@ namespace GlowingBrain.DataCapture.Views
 			get { return _appearance; }
 		}
 
-		public static readonly BindableProperty ItemsProperty = BindableProperty.Create<SurveyPageItemsView, IList<SurveyItem>> (
+		public static readonly BindableProperty ItemsProperty = BindableProperty.Create<SurveyPageItemsView, IList<ISurveyItem>> (
 			p => p.Items,
-			new List<SurveyItem> (),
+			new List<ISurveyItem> (),
 			BindingMode.OneWay,
 			propertyChanged: OnQuestionsChanged);
 
-		public IList<SurveyItem> Items {
-			get { return (IList<SurveyItem>)GetValue (ItemsProperty); }
+		public IList<ISurveyItem> Items {
+			get { return (IList<ISurveyItem>)GetValue (ItemsProperty); }
 			set { SetValue (ItemsProperty, value); }
 		}
 
-		protected virtual void OnQuestionsChanged (IList<SurveyItem> oldValue, IList<SurveyItem> newValue)
+		protected virtual void OnQuestionsChanged (IList<ISurveyItem> oldValue, IList<ISurveyItem> newValue)
 		{
 			_stackLayout.Children.Clear ();
 
@@ -57,7 +57,7 @@ namespace GlowingBrain.DataCapture.Views
 			}
 		}
 
-		protected virtual void BuildQuestions (IList<SurveyItem> questions)
+		protected virtual void BuildQuestions (IList<ISurveyItem> questions)
 		{
 			foreach (var question in questions) {
 				var questionView = BuildSectionForQuestion (question, _appearance);
@@ -65,7 +65,7 @@ namespace GlowingBrain.DataCapture.Views
 			}
 		}
 
-		protected virtual View BuildSectionForQuestion (SurveyItem question, SurveyPageAppearance appearance)
+		protected virtual View BuildSectionForQuestion (ISurveyItem question, SurveyPageAppearance appearance)
 		{
 			var stackLayout = new StackLayout {
 				HorizontalOptions = LayoutOptions.FillAndExpand
@@ -93,7 +93,7 @@ namespace GlowingBrain.DataCapture.Views
 			return stackLayout;
 		}
 
-		static void OnQuestionsChanged (BindableObject bindable, IList<SurveyItem> oldValue, IList<SurveyItem> newValue)
+		static void OnQuestionsChanged (BindableObject bindable, IList<ISurveyItem> oldValue, IList<ISurveyItem> newValue)
 		{
 			((SurveyPageItemsView)bindable).OnQuestionsChanged (oldValue, newValue);
 		}

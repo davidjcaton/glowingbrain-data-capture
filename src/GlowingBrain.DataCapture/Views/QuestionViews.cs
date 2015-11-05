@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace GlowingBrain.DataCapture.Views
 {
-	public delegate View ViewForQuestionDelegate (SurveyItem question, SurveyPageAppearance appearance);
+	public delegate View ViewForQuestionDelegate (ISurveyItem question, SurveyPageAppearance appearance);
 
 	public delegate Page PageForContainerQuestionDelegate (ContainerSurveyItem container, SurveyPageAppearance appearance);
 
@@ -27,7 +27,7 @@ namespace GlowingBrain.DataCapture.Views
 
 		public static PageForContainerQuestionDelegate PageForContainerQuestion { get; set; }
 
-		public static View DefaultViewForQuestion (SurveyItem item, SurveyPageAppearance appearance)
+		public static View DefaultViewForQuestion (ISurveyItem item, SurveyPageAppearance appearance)
 		{
 			View view = null;
 

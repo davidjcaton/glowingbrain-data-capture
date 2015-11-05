@@ -6,7 +6,7 @@ namespace GlowingBrain.DataCapture.ViewModels
 {
 	public static class QuestionCollectionExtensions
 	{
-		public static IEnumerable<CheckboxBooleanQuestion> Checked (this IEnumerable<SurveyItem> questions)
+		public static IEnumerable<CheckboxBooleanQuestion> Checked (this IEnumerable<ISurveyItem> questions)
 		{
 			return questions
 				.OfType<CheckboxBooleanQuestion> ()
@@ -19,20 +19,20 @@ namespace GlowingBrain.DataCapture.ViewModels
 				.Where (question => question.Response);
 		}
 
-		public static IList<SurveyItem> Descendants (this SurveyItem item)
+		public static IList<ISurveyItem> Descendants (this ISurveyItemContainer container)
 		{
-			var list = new List<SurveyItem> ();
-			CollectChildrenRecursive (item, list);
+			var list = new List<ISurveyItem> ();
+			CollectChildrenRecursive (container, list);
 			return list;
 		}
 
-		static void CollectChildrenRecursive (SurveyItem item, IList<SurveyItem> children)
+		static void CollectChildrenRecursive (ISurveyItemContainer container, IList<ISurveyItem> children)
 		{
-			var container = item as ContainerSurveyItem;
-			if (container != null) {
-				foreach (var child in container.Children) {
-					children.Add (child);
-					CollectChildrenRecursive (child, children);
+			foreach (var child in container.Children) {
+				children.Add (child);
+				var childContainer = child as ISurveyItemContainer;
+				if (childContainer != null) {
+					CollectChildrenRecursive (childContainer, children);
 				}
 			}
 		}

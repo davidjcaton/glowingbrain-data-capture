@@ -4,7 +4,7 @@ namespace GlowingBrain.DataCapture.ViewModels
 {
 	public class SubpageGroupQuestion : ContainerSurveyItem
 	{
-		public SubpageGroupQuestion ()			
+		public SubpageGroupQuestion (ISurveyPage page) : base (page)			
 		{
 			GetSummaryText = question => question.Text;  
 		}
@@ -25,7 +25,7 @@ namespace GlowingBrain.DataCapture.ViewModels
 			NotifyPropertyChanged ("SummaryText");
 		}
 
-		protected override void OnChildResponseChanged (SurveyItem item)
+		protected override void OnChildResponseChanged (ISurveyItem item)
 		{
 			base.OnChildResponseChanged (item);
 			NotifySummaryTextChanged ();

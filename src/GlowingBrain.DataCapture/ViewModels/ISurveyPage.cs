@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace GlowingBrain.DataCapture.ViewModels
 {
-	public interface ISurveyPage : INotifyPropertyChanged
+	public interface ISurveyPage : ISurveyItemContainer, INotifyPropertyChanged
 	{
 		ICommand NavigateBack { get; }
 		ICommand SubmitPage { get; }

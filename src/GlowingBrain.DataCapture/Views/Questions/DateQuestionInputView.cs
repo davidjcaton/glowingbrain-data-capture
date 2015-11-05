@@ -15,7 +15,7 @@ namespace GlowingBrain.DataCapture.Views.Questions
 			picker.VerticalOptions = LayoutOptions.CenterAndExpand;
 			picker.PlaceholderText = question.Text;
 			picker.BindingContext = question;
-			picker.SetBinding (OptionValuePicker.ValueProperty, new Binding ("Response", BindingMode.TwoWay));
+			picker.SetBinding (ExtendedDatePicker.ValueProperty, new Binding ("Response", BindingMode.TwoWay));
 
 			Content = picker;
 		}
