@@ -9,7 +9,7 @@ namespace GlowingBrain.DataCapture.Views.StaticItems
 		public PageHeaderView (PageHeader header, SurveyPageAppearance appearance)
 		{
 			var stackLayout = new StackLayout {
-				Style = appearance.PageHeaderLayoutStyle
+				Style = appearance.PageHeaderContentLayoutStyle
 			};
 
 			if (!String.IsNullOrEmpty (header.Caption)) {
@@ -30,7 +30,13 @@ namespace GlowingBrain.DataCapture.Views.StaticItems
 				stackLayout.Children.Add (textLabel);
 			}
 
-			Content = stackLayout;
+			Content = new StackLayout {
+				Style = appearance.PageHeaderLayoutStyle,
+				Children = {
+					stackLayout,
+					StandardViews.CreateSeparator (appearance.PageHeaderSeperatorStyle)
+				}
+			};
 		}
 	}
 }

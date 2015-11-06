@@ -13,7 +13,7 @@ namespace GlowingBrain.DataCapture
 
 		public SurveyPageAppearance ()
 		{
-			SeperatorStyle = new Style (typeof(BoxView)) {
+			ItemSeperatorStyle = new Style (typeof(BoxView)) {
 				Setters = {
 					new Setter {
 						Property = BoxView.HeightRequestProperty,
@@ -26,6 +26,19 @@ namespace GlowingBrain.DataCapture
 				}
 			};
 				
+			PageHeaderSeperatorStyle = new Style (typeof(BoxView)) {
+				Setters = {
+					new Setter {
+						Property = BoxView.HeightRequestProperty,
+						Value = 1
+					},
+					new Setter {
+						Property = BoxView.ColorProperty,
+						Value = Color.FromHex ("#b6b6b6")
+					}
+				}
+			};
+
 			SelectedOptionImageSource = ImageSource.FromFile ("tick.png");
 			UnselectedOptionImageSource = ImageSource.FromFile ("empty.png");
 
@@ -148,7 +161,12 @@ namespace GlowingBrain.DataCapture
 					new Setter {
 						Property = StackLayout.BackgroundColorProperty,
 						Value = Color.White
-					},
+					}
+				}
+			};
+
+			PageHeaderContentLayoutStyle = new Style (typeof (StackLayout)) {
+				Setters = {					
 					new Setter {
 						Property = StackLayout.PaddingProperty,
 						Value = new Thickness (10, 10, 10, 10)
@@ -160,7 +178,7 @@ namespace GlowingBrain.DataCapture
 				Setters = {
 					new Setter {
 						Property = Label.FontSizeProperty,
-						Value = Device.GetNamedSize (NamedSize.Large, typeof (Label))
+						Value = Device.GetNamedSize (NamedSize.Medium, typeof (Label))
 					},
 					new Setter {
 						Property = Label.FontAttributesProperty,
@@ -173,7 +191,7 @@ namespace GlowingBrain.DataCapture
 				Setters = {
 					new Setter {
 						Property = Label.FontSizeProperty,
-						Value = Device.GetNamedSize (NamedSize.Default, typeof (Label))
+						Value = Device.GetNamedSize (NamedSize.Small, typeof (Label))
 					}
 				}
 			};
@@ -183,7 +201,9 @@ namespace GlowingBrain.DataCapture
 
 		//public Color BackgroundColor { get; set; }
 
-		public Style SeperatorStyle { get; set; }
+		public Style ItemSeperatorStyle { get; set; }
+
+		public Style PageHeaderSeperatorStyle { get; set; }
 
 		public ImageSource SelectedOptionImageSource { get; set; }
 
@@ -218,6 +238,8 @@ namespace GlowingBrain.DataCapture
 		public Style QuestionHeaderLayoutStyle { get; set; }
 
 		public Style PageHeaderLayoutStyle { get; set; }
+
+		public Style PageHeaderContentLayoutStyle { get; set; }
 
 		public Style PageHeaderCaptionLabelStyle { get; set; }
 

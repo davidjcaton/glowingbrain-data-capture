@@ -190,7 +190,7 @@ namespace GlowingBrain.DataCapture.Views.Questions
 
 			if (_question.Response != null) {
 				_labelledSlider.Slider.Value = _question.Response.Value;
-				if (_picker != null) {
+				if (_picker != null && _question.Response != null) {
 					_picker.Value = _question.UnitOptions.FirstOrDefault (x => x.Value == _question.Response.Unit);
 				}
 			}

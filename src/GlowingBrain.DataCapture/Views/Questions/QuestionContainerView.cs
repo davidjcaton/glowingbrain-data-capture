@@ -16,9 +16,9 @@ namespace GlowingBrain.DataCapture.Views.Questions
 			var inputStackLayout = new StackLayout () {
 				Style = appearance.QuestionContainerLayoutStyle,
 				Children = {
-					StandardViews.CreateSeparator (appearance.SeperatorStyle),
+					StandardViews.CreateSeparator (appearance.ItemSeperatorStyle),
 					questionView,
-					StandardViews.CreateSeparator (appearance.SeperatorStyle)
+					StandardViews.CreateSeparator (appearance.ItemSeperatorStyle)
 				}
 			};
 

@@ -5,6 +5,8 @@ namespace GlowingBrain.DataCapture.Units
 {
 	public class Unit : IEquatable<Unit>
 	{
+		public static readonly Unit Count = new Unit (Quantity.Dimensionless, "");
+
 		public static readonly Unit Kilometer = new Unit (Quantity.Length, "km", 1000.0);
 		public static readonly Unit Meter = new Unit (Quantity.Length, "m");
 		public static readonly Unit Centimeter = new Unit (Quantity.Length, "cm", 0.01);
@@ -69,9 +71,9 @@ namespace GlowingBrain.DataCapture.Units
 
 		public static bool TryParse (string text, out Unit result)
 		{
-			if (text == null) {
-				result = null;
-				return false;
+			if (String.IsNullOrEmpty (text)) {
+				result = Count;
+				return true;
 			}
 
 			return _codeToUnitMap.Value.TryGetValue (text, out result);
@@ -82,6 +84,8 @@ namespace GlowingBrain.DataCapture.Units
 			var map = new Dictionary<string, Unit> ();
 
 			Action<Unit> add = (unit) => map.Add (unit.Code, unit);
+
+			add (Count);
 
 			add (Kilometer);
 			add (Meter);
