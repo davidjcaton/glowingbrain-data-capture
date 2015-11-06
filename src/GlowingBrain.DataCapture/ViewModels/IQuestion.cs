@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 namespace GlowingBrain.DataCapture.ViewModels
 {
-
 	public interface IQuestion : ISurveyItem
 	{
 		//string Id { get; }
@@ -15,5 +14,4 @@ namespace GlowingBrain.DataCapture.ViewModels
 		void ClearError ();
 		void Validate ();
 	}
-	
 }

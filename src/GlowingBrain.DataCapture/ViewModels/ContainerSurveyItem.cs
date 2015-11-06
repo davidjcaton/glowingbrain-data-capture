@@ -3,12 +3,6 @@ using System.Collections.Generic;
 
 namespace GlowingBrain.DataCapture.ViewModels
 {
-	public interface ISurveyItemContainer
-	{
-		SurveyItemCollection Children { get; }
-		void NotifyChildResponseChanged (ISurveyItem item);
-	}
-
 	public abstract class ContainerSurveyItem : SurveyItem, ISurveyItemContainer
 	{
 		public event EventHandler<EventArgs<ISurveyItem>> ChildResponseChanged;

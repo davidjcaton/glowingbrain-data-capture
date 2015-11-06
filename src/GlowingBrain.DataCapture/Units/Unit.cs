@@ -19,6 +19,12 @@ namespace GlowingBrain.DataCapture.Units
 		public static readonly Unit Pound = new Unit (Quantity.Mass, "[lb_av]", 7000.0 * 0.001 * 64.79891);
 		public static readonly Unit Ounce = new Unit (Quantity.Mass, "[oz_av]", (7000.0 * 0.001 * 64.79891) / 16.0);
 
+		public static readonly Unit Second = new Unit (Quantity.Time, "s");
+		public static readonly Unit Millisecond = new Unit (Quantity.Time, "ms", 0.001);
+		public static readonly Unit Minute = new Unit (Quantity.Time, "min", 60.0);
+		public static readonly Unit Hour = new Unit (Quantity.Time, "h", 60.0 * 60.0);
+		public static readonly Unit Day = new Unit (Quantity.Time, "d", 60.0 * 60.0 * 24.0);
+
 		static readonly Lazy<Dictionary<string, Unit>> _codeToUnitMap = new Lazy<Dictionary<string, Unit>> (BuildCodeToUnitMap);
 
 		public Unit (Quantity quantity, string code, double multipler = 1.0)
@@ -63,6 +69,11 @@ namespace GlowingBrain.DataCapture.Units
 
 		public static bool TryParse (string text, out Unit result)
 		{
+			if (text == null) {
+				result = null;
+				return false;
+			}
+
 			return _codeToUnitMap.Value.TryGetValue (text, out result);
 		}
 
@@ -85,6 +96,12 @@ namespace GlowingBrain.DataCapture.Units
 			add (Grain);
 			add (Pound);
 			add (Ounce);
+
+			add (Second);
+			add (Millisecond);
+			add (Minute);
+			add (Hour);
+			add (Day);
 
 			return map;
 		}

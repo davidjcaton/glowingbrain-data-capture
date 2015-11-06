@@ -17,7 +17,7 @@ namespace GlowingBrain.DataCapture.Views.Questions
 
 			var childQuestionViews = new List<View> ();
 			foreach (var childQuestion in question.Children) {
-				var childQuestionView = QuestionViews.ViewForQuestion (childQuestion, appearance);
+				var childQuestionView = SurveyItemViewFactory.Default.CreateViewForItem (childQuestion, appearance, false);
 				childQuestionViews.Add (childQuestionView);
 			}
 

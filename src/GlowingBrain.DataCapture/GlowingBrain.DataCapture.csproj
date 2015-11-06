@@ -37,7 +37,6 @@
     <Compile Include="PropertyChangedBase.cs" />
     <Compile Include="ValueUnit.cs" />
     <Compile Include="EventArgs.cs" />
-    <Compile Include="Infrastructure\EnumerableExtensions.cs" />
     <Compile Include="OptionValue.cs" />
     <Compile Include="SurveyExecutionContext.cs" />
     <Compile Include="SurveyPageAppearance.cs" />
@@ -109,6 +108,22 @@
     <Compile Include="ViewModels\SurveyResponseStore.cs" />
     <Compile Include="ViewModels\ISurveyResponseStore.cs" />
     <Compile Include="ViewModels\ISurveyItem.cs" />
+    <Compile Include="Views\GBSlider.cs" />
+    <Compile Include="Infrastructure\Numerics.cs" />
+    <Compile Include="ListPosition.cs" />
+    <Compile Include="Infrastructure\CollectionExtensions.cs" />
+    <Compile Include="Views\LabelledSlider.cs" />
+    <Compile Include="Views\StringItemsList.cs" />
+    <Compile Include="ViewModels\ISurveyItemContainer.cs" />
+    <Compile Include="ViewModels\IStaticSurveyItem.cs" />
+    <Compile Include="ViewModels\StaticSurveyItem.cs" />
+    <Compile Include="Views\StaticItems\PageHeaderView.cs" />
+    <Compile Include="ViewModels\PageHeader.cs" />
+    <Compile Include="Views\Questions\QuestionContainerView.cs" />
+    <Compile Include="ViewModels\ISurveySubpage.cs" />
+    <Compile Include="ViewModels\DefaultSurveyItemViewFactory.cs" />
+    <Compile Include="ViewModels\SurveyItemViewFactory.cs" />
+    <Compile Include="ViewModels\ISurveyItemViewFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -121,6 +136,7 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Views\Questions\" />
     <Folder Include="Views\Pages\" />
+    <Folder Include="Views\StaticItems\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

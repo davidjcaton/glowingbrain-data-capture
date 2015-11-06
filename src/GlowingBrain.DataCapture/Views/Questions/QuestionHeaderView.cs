@@ -19,5 +19,5 @@ namespace GlowingBrain.DataCapture.Views.Questions
 				}
 			};
 		}
-	}		
+	}
 }

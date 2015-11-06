@@ -8,7 +8,7 @@ namespace GlowingBrain.DataCapture.Views.Questions
 	public class SliderQuantityQuestionInputView : QuantityQuestionInputView
 	{
 		readonly Label _valueLabel;
-		readonly Slider _slider;
+		readonly LabelledSlider _labelledSlider;
 		readonly OptionValuePicker _picker;
 		readonly SliderQuantityQuestion _question;
 
@@ -49,12 +49,18 @@ namespace GlowingBrain.DataCapture.Views.Questions
 				VerticalOptions = LayoutOptions.Fill
 			};
 
-			_slider = new Slider {
+			_labelledSlider = new LabelledSlider {
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				VerticalOptions = LayoutOptions.Center
 			};
 
-			sliderStack.Children.Add (_slider);
+			if (question.Labels != null && question.Labels.Any ()) {
+				_labelledSlider.Labels.Items = question.Labels;
+			} else {
+				_labelledSlider.Labels.IsVisible = false;
+			}
+
+			sliderStack.Children.Add (_labelledSlider);
 
 			vStack.Children.Add (valueStack);
 			vStack.Children.Add (sliderStack);
@@ -63,7 +69,7 @@ namespace GlowingBrain.DataCapture.Views.Questions
 
 			// set event handlers AFTER populating
 			_question.PropertyChanged += Question_PropertyChanged;
-			_slider.PropertyChanged += Slider_PropertyChanged;
+			_labelledSlider.Slider.PropertyChanged += Slider_PropertyChanged;
 
 			if (_picker != null) {
 				_picker.PropertyChanged += Picker_PropertyChanged;
@@ -92,14 +98,32 @@ namespace GlowingBrain.DataCapture.Views.Questions
 			_valueLabel.Text = _question.GetFormattedValue ();
 		}
 
+		void SetInterval ()
+		{
+			if (_question.Response == null) {
+				return;
+			}
+
+			if (_question.Increment == null) {
+				return;
+			}
+
+			double converted;
+			if (!SurveyExecutionContext.Default.TryConvertUnit (_question.Increment.Value, _question.Increment.Unit, _question.Response.Unit, out converted)) {
+				return;
+			}
+
+			_labelledSlider.Slider.Increment = converted;
+		}
+
 		void SetLimits ()
 		{
 			if (_question.Response == null) {
 				return;
 			}
 
-			SetLimit (_question.Response.Unit, _question.Maximum, value => _slider.Maximum = value);
-			SetLimit (_question.Response.Unit, _question.Minimum, value => _slider.Minimum = value);
+			SetLimit (_question.Response.Unit, _question.Maximum, value => _labelledSlider.Slider.Maximum = value);
+			SetLimit (_question.Response.Unit, _question.Minimum, value => _labelledSlider.Slider.Minimum = value);
 		}
 
 		void SetLimit (string targetUnitCode, ValueUnit limit, Action<double> applyAction)
@@ -121,11 +145,11 @@ namespace GlowingBrain.DataCapture.Views.Questions
 			if (e.PropertyName == "Value") {
 				ValueUnit response = null;
 				if (_picker == null) {
-					response = new ValueUnit { Value = _slider.Value };
+					response = new ValueUnit { Value = _labelledSlider.Slider.Value };
 				} else {
 					var selectedUnitOptionValue = _picker.Value;
 					if (selectedUnitOptionValue != null) {
-						response = new ValueUnit { Value = _slider.Value, Unit = selectedUnitOptionValue.Value };
+						response = new ValueUnit { Value = _labelledSlider.Slider.Value, Unit = selectedUnitOptionValue.Value };
 					}
 				}
 				_question.Response = response;
@@ -165,7 +189,7 @@ namespace GlowingBrain.DataCapture.Views.Questions
 			SetLimits ();
 
 			if (_question.Response != null) {
-				_slider.Value = _question.Response.Value;
+				_labelledSlider.Slider.Value = _question.Response.Value;
 				if (_picker != null) {
 					_picker.Value = _question.UnitOptions.FirstOrDefault (x => x.Value == _question.Response.Unit);
 				}

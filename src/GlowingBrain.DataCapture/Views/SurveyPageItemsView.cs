@@ -57,46 +57,23 @@ namespace GlowingBrain.DataCapture.Views
 			}
 		}
 
-		protected virtual void BuildQuestions (IList<ISurveyItem> questions)
+		protected virtual void BuildQuestions (IList<ISurveyItem> items)
 		{
-			foreach (var question in questions) {
-				var questionView = BuildSectionForQuestion (question, _appearance);
+			foreach (var item in items) {
+				var questionView = BuildItem (item, _appearance);
 				_stackLayout.Children.Add (questionView);
 			}
 		}
 
-		protected virtual View BuildSectionForQuestion (ISurveyItem question, SurveyPageAppearance appearance)
+		protected virtual View BuildItem (ISurveyItem item, SurveyPageAppearance appearance)
 		{
-			var stackLayout = new StackLayout {
-				HorizontalOptions = LayoutOptions.FillAndExpand
-			};
-
-			var headerView = new QuestionHeaderView (question, appearance);
-			headerView.VerticalOptions = LayoutOptions.Start;
-
-			stackLayout.Children.Add (headerView);
-
-			var inputStackLayout = new StackLayout ();
-			stackLayout.Children.Add (inputStackLayout);
-
-			inputStackLayout.BackgroundColor = Color.White;
-			inputStackLayout.Children.Add (StandardViews.CreateSeparator (appearance.SeperatorStyle));
-			var inputView = QuestionViews.ViewForQuestion (question, appearance);
-			inputStackLayout.Children.Add (inputView);
-			inputStackLayout.Children.Add (StandardViews.CreateSeparator (appearance.SeperatorStyle));
-
-			if (!String.IsNullOrWhiteSpace (question.Footnote)) {
-				var footerView = new QuestionFooterView (question, appearance);
-				stackLayout.Children.Add (footerView);
-			}
-
-			return stackLayout;
+			var wrapInContainer = !(item is IStaticSurveyItem);
+			return SurveyItemViewFactory.Default.CreateViewForItem (item, appearance, wrapInContainer);
 		}
 
 		static void OnQuestionsChanged (BindableObject bindable, IList<ISurveyItem> oldValue, IList<ISurveyItem> newValue)
 		{
 			((SurveyPageItemsView)bindable).OnQuestionsChanged (oldValue, newValue);
 		}
-	}
-	
+	}	
 }

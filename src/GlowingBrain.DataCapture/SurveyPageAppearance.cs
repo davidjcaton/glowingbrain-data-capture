@@ -64,6 +64,15 @@ namespace GlowingBrain.DataCapture
 				BasedOn = QuestionInputViewStyle
 			};
 		
+			QuestionContainerLayoutStyle = new Style (typeof(StackLayout)) {
+				Setters = {
+					new Setter {
+						Property = StackLayout.BackgroundColorProperty,
+						Value = Color.White
+					}
+				}
+			};
+
 			QuestionInputViewContainerLayoutStyle = new Style (typeof(StackLayout)) {
 				Setters = {
 					new Setter {
@@ -133,6 +142,41 @@ namespace GlowingBrain.DataCapture
 					}
 				}
 			};
+
+			PageHeaderLayoutStyle = new Style (typeof (StackLayout)) {
+				Setters = {
+					new Setter {
+						Property = StackLayout.BackgroundColorProperty,
+						Value = Color.White
+					},
+					new Setter {
+						Property = StackLayout.PaddingProperty,
+						Value = new Thickness (10, 10, 10, 10)
+					},
+				}
+			};
+
+			PageHeaderCaptionLabelStyle = new Style (typeof (Label)) {
+				Setters = {
+					new Setter {
+						Property = Label.FontSizeProperty,
+						Value = Device.GetNamedSize (NamedSize.Large, typeof (Label))
+					},
+					new Setter {
+						Property = Label.FontAttributesProperty,
+						Value = FontAttributes.Bold
+					}
+				}
+			};
+
+			PageHeaderTextLabelStyle = new Style (typeof (Label)) {
+				Setters = {
+					new Setter {
+						Property = Label.FontSizeProperty,
+						Value = Device.GetNamedSize (NamedSize.Default, typeof (Label))
+					}
+				}
+			};
 		}
 
 		public static SurveyPageAppearance Default { get; set; }
@@ -159,6 +203,8 @@ namespace GlowingBrain.DataCapture
 
 		public Style QuestionOptionStyle { get; set; }
 
+		public Style QuestionContainerLayoutStyle { get; set; }
+
 		public Style QuestionInputViewContainerLayoutStyle { get; set; }
 
 		public Style QuestionErrorLabelStyle { get; set; }
@@ -170,5 +216,11 @@ namespace GlowingBrain.DataCapture
 		public Style QuestionFooterLayoutStyle { get; set; }
 
 		public Style QuestionHeaderLayoutStyle { get; set; }
+
+		public Style PageHeaderLayoutStyle { get; set; }
+
+		public Style PageHeaderCaptionLabelStyle { get; set; }
+
+		public Style PageHeaderTextLabelStyle { get; set; }
 	}		
 }

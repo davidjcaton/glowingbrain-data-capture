@@ -62,7 +62,7 @@ namespace GlowingBrain.DataCapture.Views.Questions
 
 		protected virtual Page OnCreateSubpage (SubpageGroupQuestion question)
 		{
-			var page = QuestionViews.PageForContainerQuestion (question, Appearance);
+			var page = SurveyItemViewFactory.Default.CreatePageForItem (question, Appearance);
 			return page;
 		}
 

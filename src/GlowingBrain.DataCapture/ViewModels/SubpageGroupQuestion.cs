@@ -2,7 +2,8 @@ using System;
 
 namespace GlowingBrain.DataCapture.ViewModels
 {
-	public class SubpageGroupQuestion : ContainerSurveyItem
+
+	public class SubpageGroupQuestion : ContainerSurveyItem, ISurveySubpage
 	{
 		public SubpageGroupQuestion (ISurveyPage page) : base (page)			
 		{
