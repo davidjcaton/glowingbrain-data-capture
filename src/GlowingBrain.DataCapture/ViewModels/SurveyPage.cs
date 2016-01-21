@@ -2,6 +2,7 @@ using System;
 using System.Windows.Input;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections;
 
 namespace GlowingBrain.DataCapture.ViewModels
 {
@@ -47,7 +48,7 @@ namespace GlowingBrain.DataCapture.ViewModels
 		}
 
 		protected virtual void OnSubmitPage ()
-		{
+		{			
 			_survey.SubmitPage (Questions);
 		}
 

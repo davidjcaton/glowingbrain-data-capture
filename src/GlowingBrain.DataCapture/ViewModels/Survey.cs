@@ -57,6 +57,7 @@ namespace GlowingBrain.DataCapture.ViewModels
 				if (question.HasError) {
 					return new ValidationFailureSubmitPageResult ();
 				}
+				question.Commit ();
 			}
 
 			OnAdvancePage ();

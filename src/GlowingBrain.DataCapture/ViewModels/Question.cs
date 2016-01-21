@@ -23,6 +23,18 @@ namespace GlowingBrain.DataCapture.ViewModels
 			}
 		}
 
+		public void Commit ()
+		{
+			// Explanation:
+			// Certain questions like boolean questions have an "implicit" default value of 
+			// false. No user interaction is needed for them to have this value. As such,
+			// we need a mechanism for default values of such questions to be pushed to the
+			// underlying response store.
+			if (HasResponse) {
+				SetResponse (Response);
+			}
+		}
+
 		protected TResponse GetResponse ()
 		{
 			TResponse response;

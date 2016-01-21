@@ -13,5 +13,14 @@ namespace GlowingBrain.DataCapture.ViewModels
 		bool HasResponse { get; }
 		void ClearError ();
 		void Validate ();
+
+		/// <summary>
+		/// Called prior to page submission to ensure the underlying 
+		/// response store has the current user response. This is important
+		/// for certain queation types (such as booleans) that have an
+		/// implicit default value that must be committed even if the
+		/// user has not interacted with the UI elements
+		/// </summary>
+		void Commit ();
 	}
 }
